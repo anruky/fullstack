@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+    <title>Matching Game</title>
+    <style>
+        div{position:absolute; width: 500px; height:500px;}
+        img{position:absolute;}
+        #rightSide { left: 500px;border-left: 1px solid black}
+    </style>
+
+</head>
+    <body onload=generateFaces()>
+      <H1>Matching Game</h1>
+      <p> Click on the extra smiling face on the left. </p>
+      <div id="leftSide">
+
+      </div>
+      <div id="rightSide" >
+
+      </div>
+      <script>
+        var numberOfFaces = 5;
+        var theLeftSide = document.getElementById("leftSide");
+        var theRightSide = document.getElementById("rightSide");
+        var theBody = document.getElementsByTagName("body")[0];
+
+        function generateFaces(){
+          while (theLeftSide.firstChild) {
+              theLeftSide.removeChild(theLeftSide.firstChild);
+          }
+          while (theRightSide.firstChild) {
+              theRightSide.removeChild(theRightSide.firstChild);
+          }
+          for(i=0;i<numberOfFaces; i++)
+          {
+            smil = document.createElement("img");
+            smil.src= "http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png"
+            tt=Math.floor(Math.random() * 400);
+            ll=Math.floor(Math.random() * 400 );
+            smil.style.top=tt + "px";
+            smil.style.left = ll + "px";
+            //alert(i+"top"+tt+"left"+ll);
+            theLeftSide.appendChild(smil);
+          }
+          leftSideImages = theLeftSide.cloneNode(true);
+          la=leftSideImages.lastChild;
+          leftSideImages.removeChild(la);
+          theRightSide.appendChild(leftSideImages);
+
+          theLeftSide.lastChild.onclick=function nextLevel(event){
+                  event.stopPropagation();
+                  numberOfFaces += 5;
+                  generateFaces();
+                };
+        }
+
+        theBody.onclick=function gameOver() {
+                alert("Game Over!");
+                theBody.onclick = null;
+                theLeftSide.lastChild.onclick = null;
+              };
+        //theLeftSide.lastChid.addEventListener("click",nextLevel);
+        //theBody.addEventListener("click",gameOver);
+
+      </script>
+    </body>
+</html>
