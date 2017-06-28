@@ -1,0 +1,24 @@
+{
+  "name": "confusion",
+  "homepage": "https://github.com/anruky/fullstack",
+  "authors": [
+    "anruky <anruky@gmail.com>"
+  ],
+  "description": "test",
+  "main": "index.html",
+  "keywords": [
+    "conFusion"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0"
+  }
+}
