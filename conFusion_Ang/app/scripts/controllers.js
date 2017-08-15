@@ -7,8 +7,35 @@ angular.module('confusionApp')
         $scope.tab = 1;
         $scope.filtText = '';
         $scope.showDetails = false;
+        $scope.message = "Loading ...";
 
-        $scope.dishes = menuFactory.getDishes();
+        //        $scope.dishes = menuFactory.getDishes();
+        //        
+
+        $scope.showMenu = false;
+        $scope.message = "Loading ...";
+        menuFactory.getDishes().query(
+            function (response) {
+                $scope.dishes = response;
+                $scope.showMenu = true;
+            },
+            function (response) {
+                $scope.message = "Error: " + response.status + " " + response.statusText;
+            });
+
+        //        
+        //        $scope.dishes = {};
+        //        menuFactory.getDishes()
+        //            .then(
+        //                function (response) {
+        //                    $scope.dishes = response.data;
+        //                    $scope.showMenu = true;
+        //                },
+        //                function (response) {
+        //                    $scope.message = "Error: " + response.status + " " + response.statusText;
+        //                }
+        //
+        //            );
 
 
         $scope.select = function (setTab) {
@@ -84,26 +111,42 @@ angular.module('confusionApp')
 
     .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function ($scope, $stateParams, menuFactory) {
 
-        
-        var ind= 0;
-        
-        if ($stateParams.id != null) {ind = parseInt($stateParams.id, 10)};
-        
-        var dish = menuFactory.getDish(ind);
 
-        $scope.dish = dish;
+        var ind = 0;
+
+        if ($stateParams.id != null) {
+            ind = parseInt($stateParams.id, 10)
+        };
+
+        $scope.showDish = false;
+        $scope.message = "Loading ...";
+        $scope.dish = menuFactory.getDishes().get({
+                id: parseInt($stateParams.id, 10)
+            })
+            .$promise.then(
+                function (response) {
+                    $scope.dish = response;
+                    $scope.showDish = true;
+                },
+                function (response) {
+                    $scope.message = "Error: " + response.status + " " + response.statusText;
+                }
+            );
+
+        //        menuFactory.getDish(parseInt($stateParams.id, 10))
+        //            .then(
+        //                function (response) {
+        //                    $scope.dish = response.data;
+        //                    $scope.showDish = true;
+        //                },
+        //                function (response) {
+        //                    $scope.message = "Error: " + response.status + " " + response.statusText;
+        //                }
+        //            );
 
         }])
 
-   .controller('PromotionController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
-
-        var promotion = menuFactory.getPromotion(0);
-
-        $scope.promotion = promotion;
-
-        }])
-
-    .controller('DishCommentController', ['$scope', function ($scope) {
+    .controller('DishCommentController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
 
         $scope.mycomment = {
             rating: 5,
@@ -112,15 +155,32 @@ angular.module('confusionApp')
             date: ""
         };
 
-        $scope.submitComment = function () {
+        //        $scope.submitComment = function () {
+        //
+        //            $scope.mycomment.date = new Date().toISOString();
+        //            console.log($scope.mycomment);
+        //
+        //            $scope.dish.comments.push($scope.mycomment);
+        //
+        //            $scope.commentForm.$setPristine();
+        //
+        //            $scope.mycomment = {
+        //                rating: 5,
+        //                comment: "",
+        //                author: "",
+        //                date: ""
+        //            };
+        //        }
 
+        $scope.submitComment = function () {
             $scope.mycomment.date = new Date().toISOString();
             console.log($scope.mycomment);
-
             $scope.dish.comments.push($scope.mycomment);
 
+            menuFactory.getDishes().update({
+                id: $scope.dish.id
+            }, $scope.dish);
             $scope.commentForm.$setPristine();
-
             $scope.mycomment = {
                 rating: 5,
                 comment: "",
@@ -128,6 +188,7 @@ angular.module('confusionApp')
                 date: ""
             };
         }
+
         }])
 
     // implement the AboutIndexController and AboutController here
@@ -138,9 +199,41 @@ angular.module('confusionApp')
 
         }])
 
-    .controller('IndexController', ['$scope', 'corporateFactory', function ($scope, corporateFactory) {
+    .controller('IndexController', ['$scope', 'corporateFactory', 'menuFactory', function ($scope, corporateFactory, menuFactory) {
 
         $scope.leader = corporateFactory.getLeader(3);
+        $scope.promotion = menuFactory.getPromotion(0);
+        //        $scope.dish = menuFactory.getDish(0);
+
+
+        //        $scope.dish = {};
+        $scope.message = "Loading ...";
+
+        $scope.showDish = false;
+        $scope.dish = menuFactory.getDishes().get({
+                id: 0
+            })
+            .$promise.then(
+                function (response) {
+                    $scope.dish = response;
+                    $scope.showDish = true;
+                },
+                function (response) {
+                    $scope.message = "Error: " + response.status + " " + response.statusText;
+                }
+            );
+        //        
+        //        menuFactory.getDish(0)
+        //            .then(
+        //                function (response) {
+        //                    $scope.dish = response.data;
+        //                    $scope.showDish = true;
+        //                },
+        //                function (response) {
+        //                    $scope.message = "Error: " + response.status + " " + response.statusText;
+        //                }
+        //            );
+
 
         }])
 
