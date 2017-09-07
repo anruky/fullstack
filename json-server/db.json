@@ -178,7 +178,7 @@
       "image": "images/buffet.png",
       "label": "New",
       "price": "19.99",
-      "description": "Featuring mouthwatering combinations with a choice of five different salads, six enticing appetizers, six main entrees and five choicest desserts. Free flowing bubbly and soft drinks. All for just $19.99 per person "
+      "description": "Featuring mouthwatering combinations with a choice of five different salads, six enticing appetizers, six main entrees and five choicest desserts. Free flowing bubbly and soft drinks. All for just $19.99 per person -test"
     }
   ],
   "leadership": [
@@ -212,8 +212,114 @@
       "image": "images/alberto.png",
       "designation": "Executive Chef",
       "abbr": "EC",
-      "description": "Award winning three-star Michelin chef with wide International experience having worked closely with whos-who in the culinary world, he specializes in creating mouthwatering Indo-Italian fusion experiences. He says, Put together the cuisines from the two craziest cultures, and you get a winning hit! Amma Mia!"
+      "description": "TTAward winning three-star Michelin chef with wide International experience having worked closely with whos-who in the culinary world, he specializes in creating mouthwatering Indo-Italian fusion experiences. He says, Put together the cuisines from the two craziest cultures, and you get a winning hit! Amma Mia!"
     }
   ],
-  "feedback": []
+  "feedback": [
+    {
+      "mychannel": "1",
+      "firstName": "1",
+      "lastName": "1",
+      "agree": false,
+      "email": "1",
+      "areaCode": "1",
+      "number": "1",
+      "id": 1
+    },
+    {
+      "mychannel": "",
+      "firstName": "22",
+      "lastName": "2",
+      "agree": false,
+      "email": "2@2",
+      "areaCode": "",
+      "number": "",
+      "id": 2
+    },
+    {
+      "mychannel": "",
+      "firstName": "33",
+      "lastName": "33",
+      "agree": false,
+      "email": "23@2",
+      "areaCode": "2",
+      "number": "",
+      "comments": "test",
+      "id": 3
+    },
+    {
+      "mychannel": "",
+      "firstName": "22",
+      "lastName": "22",
+      "agree": false,
+      "email": "222@2",
+      "areaCode": "2",
+      "number": "",
+      "comments": "test",
+      "id": 4
+    },
+    {
+      "mychannel": "",
+      "firstName": "ee",
+      "lastName": "eee",
+      "agree": false,
+      "email": "ee@ee",
+      "areaCode": "",
+      "number": "",
+      "comments": "ee",
+      "id": 5
+    },
+    {
+      "mychannel": "",
+      "firstName": "55",
+      "lastName": "55",
+      "agree": false,
+      "email": "55@55",
+      "areaCode": "",
+      "number": "",
+      "id": 6
+    },
+    {
+      "mychannel": "",
+      "firstName": "66",
+      "lastName": "66",
+      "agree": false,
+      "email": "66@66",
+      "areaCode": "",
+      "number": "",
+      "comments": "66",
+      "id": 7
+    },
+    {
+      "mychannel": "",
+      "firstName": "77",
+      "lastName": "77",
+      "agree": false,
+      "email": "7@7",
+      "comments": "7",
+      "id": 8
+    },
+    {
+      "mychannel": "",
+      "firstName": "8",
+      "lastName": "8",
+      "agree": false,
+      "email": "8@8",
+      "comments": "88",
+      "areaCode": "6",
+      "number": "8",
+      "id": 9
+    },
+    {
+      "mychannel": "",
+      "firstName": "9",
+      "lastName": "9",
+      "agree": false,
+      "email": "9@9",
+      "areaCode": "9",
+      "number": "9",
+      "comments": "9",
+      "id": 10
+    }
+  ]
 }
